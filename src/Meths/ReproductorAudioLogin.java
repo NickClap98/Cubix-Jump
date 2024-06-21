@@ -18,7 +18,7 @@ public class ReproductorAudioLogin {
     public  void MP3() {
         try {
             // PONER RUTA DEL LOGIN.wav
-            File file = new File("C:/Users/Nick/Documents/Ejercicios_Java/Painbal/src/fondo/Login.wav");
+            File file = new File("src/fondo/Login.wav");
             
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
