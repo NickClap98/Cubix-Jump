@@ -10,7 +10,7 @@ public class ReproductorAudioGame {
      private Clip clip;
     public  void MP3() {
         try {
-                    // PONER RUTA DE FondoMusic.wav
+                    // PONER RUTA DE FondoMusic.wav pero asi por defecto tendria que funcionar
             File file = new File("src/fondo/FondoMusic.wav");
     
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
