@@ -11,7 +11,7 @@ public class ReproductorAudioGame {
     public  void MP3() {
         try {
                     // PONER RUTA DE FondoMusic.wav
-            File file = new File("C:/Users/Nick/Documents/Ejercicios_Java/Painbal/src/fondo/FondoMusic.wav");
+            File file = new File("src/fondo/FondoMusic.wav");
     
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
