@@ -17,7 +17,7 @@ public class ReproductorAudioLogin {
      private Clip clip;
     public  void MP3() {
         try {
-            // PONER RUTA DEL LOGIN.wav
+            // PONER RUTA DEL LOGIN.wav pero asi por defecto tendria que funcionar
             File file = new File("src/fondo/Login.wav");
             
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
