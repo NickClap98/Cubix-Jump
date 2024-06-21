@@ -1,0 +1,10 @@
+CREATE DATABASE CubixJump;
+
+CREATE TABLE IF NOT EXISTS Puntaje(
+id INT AUTO_INCREMENT PRIMARY KEY,
+Nombre VARCHAR(255),
+Score VARCHAR(255)
+
+);
+
+-- select * FROM Puntaje;
