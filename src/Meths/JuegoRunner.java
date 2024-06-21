@@ -169,7 +169,7 @@ private int direccionMovimiento = 5;
             
                 guardarPuntajeBD(Nombre,score);
                 int opcion = JOptionPane.showOptionDialog(null,
-                "¿Qué desea hacer?",
+                "Tu Puntaje fue: "+score+"\n ¿Qué desea hacer?",
                 "Confirmación",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
