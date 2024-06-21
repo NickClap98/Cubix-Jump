@@ -85,6 +85,10 @@ private int direccionMovimiento = 5;
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 20));
         g.drawString("Score: " + score, 10, 30);
+         // Dibujar Guia
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Arial", Font.BOLD, 10));
+        g.drawString("Space Bar (Jump) " , 600, 30);
 
         // Mostrar "Game Over" si el juego ha terminado
         if (gameOver) {
