@@ -3,6 +3,9 @@ package Meths;
 import javax.swing.*;
 import java.awt.*;
 
+import java.sql.ResultSet;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -37,6 +40,7 @@ private final int alturaSalto = 150;
     
 
     public JuegoRunner() {
+        
            
         Sound.MP3();
        
@@ -258,5 +262,47 @@ public void keyReleased(KeyEvent e) {
         ex.printStackTrace();
     }
 }
-    
+    public List<Puntaje> obtenerPuntajes() {
+        List<Puntaje> puntajes = new ArrayList<>();
+        String url = "jdbc:mysql://localhost:3306/CubixJump";
+        String usuario = "root";
+        String contraseña = "root";
+
+        try {
+            Connection con = DriverManager.getConnection(url, usuario, contraseña);
+            String query = "SELECT Nombre, Score FROM Puntaje";
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                String nombre = rs.getString("Nombre");
+                int score = rs.getInt("Score");
+                puntajes.add(new Puntaje(nombre, score));
+            }
+
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return puntajes;
+    }
+
+    public static class Puntaje {
+        private String nombre;
+        private int score;
+
+        public Puntaje(String nombre, int score) {
+            this.nombre = nombre;
+            this.score = score;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public int getScore() {
+            return score;
+        }
+    }
 }
+ 
