@@ -2,6 +2,7 @@ package Meths;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -17,9 +18,8 @@ import java.sql.SQLException;
 
 public class JuegoRunner extends JPanel implements KeyListener, ActionListener {
    private boolean saltando = false;
-private int alturaSalto = 150;
-private int velocidadMovimiento = 50;
-private int direccionMovimiento = 5;
+private final int alturaSalto = 150;
+
     private int playerY = 360;
      private int playerX = 375;
     private int playerWidth = 28;
@@ -31,7 +31,7 @@ private int direccionMovimiento = 5;
     private int obstaculoWidth = 30;
     private int obstaculoHeight = 30;
     private Random random = new Random();
-    private int velocidad = 2;
+    private double velocidad = 3.5;
     private Timer timer;
      ReproductorAudioGame Sound = new ReproductorAudioGame(); 
     
@@ -113,36 +113,20 @@ private int direccionMovimiento = 5;
     }
 
    public void moverJugador() {
-    if (playerY >= 666) {
+    if (playerY >= 380) {
         playerY = 1;
-    }
-
-    // Mover lateralmente
-    playerX += velocidadMovimiento; // Remove the multiplication by direccionMovimiento
-
-    if (playerX < 0) {
-        playerX = 0;
-    } else if (playerX + playerWidth > 800) {
-        playerX = 800 - playerWidth;
-    }
-
-    // Update playerX based on direccionMovimiento
-    if (direccionMovimiento == -1) {
-        playerX -= velocidadMovimiento;
-    } else if (direccionMovimiento == 1) {
-        playerX += velocidadMovimiento;
     }
 
     // Simular el salto
     if (saltando) {
         if (playerY > 360 - alturaSalto) {
-            playerY -= 2; // Subir durante el salto
+            playerY -= 3; // Subir durante el salto
         } else {
             saltando = false;
         }
     } else {
         if (playerY < 360) {
-            playerY += 2; // Bajar después del salto
+            playerY += 3; // Bajar después del salto
         }
     }
 }
@@ -234,20 +218,13 @@ public void reiniciarJuego() {
     @Override
 public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
-    if (key == KeyEvent.VK_A) {
-        direccionMovimiento = -1; // Mover a la izquierda
-    } else if (key == KeyEvent.VK_RIGHT) {
-        direccionMovimiento = 1; // Mover a la derecha
-    } else if (key == KeyEvent.VK_SPACE && playerY == 360) {
+   if (key == KeyEvent.VK_SPACE && playerY == 360) {
         saltando = true;
     }
 }
 @Override
 public void keyReleased(KeyEvent e) {
-    int key = e.getKeyCode();
-    if (key == KeyEvent.VK_A || key == KeyEvent.VK_RIGHT) {
-        direccionMovimiento = 0; // Reset the direction movement
-    }
+  
 }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new JuegoRunner());
